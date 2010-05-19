@@ -1,7 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uebungsblatt}[2008/10/26 Copyleft Thomas Holder, Tobias Heide, Marek Kubica]
-
-% Version Information: $Id$
+\ProvidesClass{uebungsblatt}[2010/05/19 Copyleft Thomas Holder, Tobias Heide, Marek Kubica, Michael Kerscher]
 
 \input{uebungsblatt-requirements}
 \input{uebungsblatt-options}
@@ -17,5 +15,3 @@
 \input{uebungsblatt-misc}
 
 \input{uebungsblatt-style}
-
-% vi:ft=tex
