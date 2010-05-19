@@ -1,0 +1,32 @@
+%% Delayed handlers
+
+\AtBeginDocument{%
+  \ifnum\theidestyle=1{%
+    \lhead {%
+      \ifx\@author\empty\else\textsc{\@author}\\\fi%
+	  \ifx\thefach\empty\else\thefach\fi%
+	}%
+	\rhead {%
+	  \ifx\therighthead\empty\else\therighthead\\\fi%
+	  \today%
+	}%
+  }\else\ifnum\tholderstyle=1{%
+    \lhead{\thefach{} -- Blatt \theblatt{} -- Seite \thepage{} von \pageref{lastpage}}%
+    \rhead{\textsc{\@author}}%
+    \cfoot{}%
+  }\else{%
+    \lhead{%
+      \ifthenelse{\isundefined{\thefach}}   {}{\thefach{} \"Ubungsblatt \theblatt{}}%
+      \ifthenelse{\isundefined{\thegruppe}}{}{ Gruppe \thegruppe{}}%
+      \ifthenelse{\showpageheader=1}{-- Seite \thepage{} von \pageref{lastpage}\cfoot{}}{}%
+    }%
+    \rhead{%
+      \ifx\@author\empty\else\textsc{\@author}\\\fi%
+    }%
+  }\fi\fi%
+  % broken somehow:
+  %\headrulewidth 0.5pt
+  \punktetabelle%
+}
+
+\AtEndDocument{\uebungsblattende}

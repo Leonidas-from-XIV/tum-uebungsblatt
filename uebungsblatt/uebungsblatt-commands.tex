@@ -1,0 +1,10 @@
+\newcommand{\fach}[1]{\def\thefach{#1}}
+\newcommand{\blatt}[2][]{\def\theblatt{#2}\ifx#1\empty\else\fach{#1}\fi}
+\newcommand{\righthead}[1]{\def\therighthead{#1}}
+% at TUM, we also need to specify groups
+\newcommand{\gruppe}[1]{\def\thegruppe{#1}}
+
+\fach{}
+\blatt{}
+\gruppe{}
+\righthead{}

@@ -1,0 +1,17 @@
+%% Initialise Variables
+
+\def\showpageheader{0}
+\def\theidestyle{0}
+\def\tholderstyle{0}
+\def\xv{\cv}
+
+%% Process Options
+
+\DeclareOption{pageheader}{\def\showpageheader{1}}
+\DeclareOption{theide}{\def\theidestyle{1}}
+\DeclareOption{tholder}{\def\tholderstyle{1}}
+\DeclareOption{rowvectors}{\def\xv{\rv}}
+\DeclareOption*{\PackageWarning{uebungsblatt}{No such option: [\CurrentOption],
+	passing to superclass}%
+	\PassOptionsToClass{\CurrentOption}{scrartcl}}
+\ProcessOptions\relax

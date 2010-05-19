@@ -1,0 +1,20 @@
+%% punktetabelle
+
+\newcounter{ptcc}
+\newcommand
+    {\ptloop}[1]
+    {\ifthenelse{\value{ptcc}<\value{aufgabentotal}}
+    	{\stepcounter{ptcc}#1 \hspace{0.3cm} & \ptloop{#1}}{}%
+}
+\newcommand
+    {\punktetabelle}
+    {\ifnum\value{aufgabentotal}>0{%
+     \begin{flushright}%
+       \textsc{Punkteverteilung:}\\\vspace{0.5em}%
+       \begin{tabular}{*{\value{aufgabencount}}{c|}|c}%
+          \setcounter{ptcc}{\value{aufgabenstart}}\ptloop{\arabic{ptcc}} $\Sigma$ \\\hline%
+          \setcounter{ptcc}{\value{aufgabenstart}}\ptloop{} \\%
+       \end{tabular}%
+     \end{flushright}%
+	}\fi%
+}

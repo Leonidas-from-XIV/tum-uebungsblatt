@@ -1,0 +1,48 @@
+%% aufgabenmakro
+\newcounter{aufgabencount}
+\newcounter{aufgabenstart}
+\setcounter{aufgabenstart}{0}
+\newcounter{aufgabentotal}
+\setcounter{aufgabentotal}{0}
+\newcounter{aufgabe}
+\setcounter{aufgabe}{0}
+\newcommand
+    {\insideteilaufgabe}
+    {false}
+\newcommand
+    {\aufgabe}[1][]
+    {\teilaufgabeClose\stepcounter{aufgabe}%
+    \ifx#1\empty\else\setcounter{aufgabe}{#1}\fi%
+    \ifx#1\empty\else\setcounter{aufgabenstart}{#1-1}\fi%
+    \ifthenelse{\theidestyle=1}{%
+       \medskip\vspace{2em} \textbf{Aufgabe (\arabic{aufgabe})}\vspace{1em}%
+    }{%
+       \medskip\hspace{-1em}\textbf{Aufgabe (\arabic{aufgabe})}
+
+    }}
+\newcommand
+    {\teilaufgabe}
+    {\ifthenelse%
+        {\equal{\insideteilaufgabe}{false}}%
+        {\vspace{-1ex}\begin{enumerate}[(a)]\renewcommand{\insideteilaufgabe}{true}}{}%
+    \item}
+\newcommand
+    {\teilaufgabeClose}
+    {\ifthenelse%
+        {\equal{\insideteilaufgabe}{true}}%
+        {\end{enumerate}\renewcommand{\insideteilaufgabe}{false}}{}}
+\newcommand
+    {\uebungsblattende}
+    {\teilaufgabeClose%
+    \label{lastpage}%
+    \protected@write\@auxout{}{%
+        \string\setcounter{aufgabentotal}{\arabic{aufgabe}}%
+    }%
+    \protected@write\@auxout{}{%
+        \string\setcounter{aufgabenstart}{\arabic{aufgabenstart}}%
+    }%
+    \setcounter{aufgabencount}{\value{aufgabe}-\value{aufgabenstart}}%
+    \protected@write\@auxout{}{%
+        \string\setcounter{aufgabencount}{\arabic{aufgabencount}}%
+    }%
+}
